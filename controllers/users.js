@@ -6,6 +6,14 @@ module.exports = {
       message: `User ${req.body.email} Registered`
     });
   },
+  loginUser: (req, res) => {
+    knex("users")
+      .where("email", req.body.email)
+      .then(results => {
+        let user = results[0];
+    
+      });
+  },
   getUsers: (req, res) => {
     knex("users").then(users => res.json(users));
   },
