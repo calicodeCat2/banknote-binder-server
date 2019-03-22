@@ -8,7 +8,7 @@ module.exports = {
       .join('regions', 'reg_id', '=', 'regions.id')
         .then(banknotes => res.json(banknotes))
     },
-
+    
     getBanknote: (req, res) => {
       knex('banknotes')
       .join('countries', 'ctry_id', '=', 'countries.id')

@@ -8,12 +8,21 @@ module.exports = {
   },
   loginUser: (req, res) => {
     knex("users")
-      .where("email", req.body.email)
-      .then(results => {
-        let user = results[0];
-    
-      });
-  },
+      .where("email", req.params.email)
+      .join('collections', 'users.id', '=', 'user_id')
+      .join('banknotes', 'note_id', '=', 'banknotes.id')
+      .join('countries', 'ctry_id', '=', 'countries.id')
+      .join('regions', 'reg_id', '=', 'regions.id')
+      .then(user => res.json(user))
+    },
+    getBanknote: (req, res) => {
+      knex('banknotes')
+      .join('countries', 'ctry_id', '=', 'countries.id')
+      .join('regions', 'reg_id', '=', 'regions.id')
+      .where('banknotes.id', req.params.id)
+      .then(banknote => res.json(banknote))
+    },
+
   getUsers: (req, res) => {
     knex("users").then(users => res.json(users));
   },
