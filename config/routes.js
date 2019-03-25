@@ -16,6 +16,7 @@ module.exports = function(app) {
   app.get("/banknotes/countries", banknotes.getCountries)
   app.get("/banknotes/countries/:id", banknotes.getCountry);
   app.get("/banknotes/:id", banknotes.getBanknote);
+  app.get("/banknotes/random", banknotes.getRandom);
   app.get("/regions", banknotes.getRegions);
   app.get("/regions/:id", banknotes.getRegion);
   app.get("/newissues", banknotes.getNewIssues);
@@ -27,6 +28,8 @@ module.exports = function(app) {
   // User Table Routes
   app.get("/users", users.getUsers);
   app.get("/users/:id", users.getUser);
+  app.get("/users/collection/:id", users.getUserCollection);
+  app.get("/users/collections", users.getAllCollections);
   app.get("/users/login/:email", users.loginUser);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);

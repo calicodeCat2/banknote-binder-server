@@ -8,6 +8,19 @@ module.exports = {
       .join('regions', 'reg_id', '=', 'regions.id')
         .then(banknotes => res.json(banknotes))
     },
+    getRandom: (req, res) => {
+      knex('banknotes')
+      .join('countries', 'ctry_id', '=', 'countries.id')
+      .join('regions', 'reg_id', '=', 'regions.id')
+        .then(banknotes)
+        let banknotes = banknotes.map(banknote => {
+          while (i < 5) {
+            banknote[Math.floor(Math.random() * state.banknotes)]
+          } 
+          console.log(banknote);
+          res.json(bankote)
+        })
+    },
     
     getBanknote: (req, res) => {
       knex('banknotes')
@@ -16,13 +29,6 @@ module.exports = {
       .where('banknotes.id', req.params.id)
       .then(banknote => res.json(banknote))
     },
-
-    // She's a NO FLUSH
-    getBanknotesByCountry: (req, res) => {
-        knex('banknotes')
-        .select('banknotes.*', 'countries.name')
-        .where('countries', 'ctry_id', '=', 'countries.id')
-      },
 
       addBankote: (req, res) => {
         knex('banknotes')
