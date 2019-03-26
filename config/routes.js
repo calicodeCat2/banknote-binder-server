@@ -27,12 +27,13 @@ module.exports = function(app) {
   app.delete("/newissues/deletenewissue/:id", banknotes.deleteNewIssue);
 
   // User Table Routes
-  app.get("/users/login/:email", users.loginUser);
+  app.post("/users/login", users.loginUser);
+  app.post("/users/register", users.registerUser);
   app.get("/users", users.getUsers);
   app.get("/users/:id", users.getUser);
   app.get("/users/collection/:id", users.getUserCollection);
   app.get("/users/collections", users.getAllCollections);
-  app.get("/users/collections/add", users.addToCollection);
+  app.post("/users/collections/addnote/:id", users.addToCollection);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);
   app.delete("/users/deleteuser/:id", users.deleteUser);

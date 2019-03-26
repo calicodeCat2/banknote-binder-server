@@ -7,18 +7,17 @@ module.exports = {
       first_name: req.body.firstName,
       last_name: req.body.lastName,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.email),
+      password: req.body.password,
     })
     .returning('*')
-    .then('newUser'),
+    .then('newuser'),
     function (err) {
       if (err) return res.status(500).send("There was a problem with registration")
-      knex('users')
     }
   },
   loginUser: (req, res) => {
     knex("users")
-      .where("email", req.params.email)
+      .where("email", req.body.email)
       .then(user => res.json(user));
   },
 
@@ -51,7 +50,14 @@ module.exports = {
   },
   addToCollection: (req, res) => {
     knex("collections")
-    .insert(req.body)
+    // .where("users.id", req.params.id)
+    // .join("collections", "users.id", "=", "collections.user_id")
+    .insert({
+      user_id: req.body.user_id,
+      note_id: req.body.note_id,
+      in_collection: req.body.in_collection,
+      in_wantlist: req.body.in_wantlist
+    })
     .returning("*")
     .then(collectionAddition => res.json(collectionAddition));
   },
@@ -60,7 +66,7 @@ module.exports = {
     knex("users")
       .insert(req.body)
       .returning("*")
-      .then(newUser => res.json(newUser));
+      .then(newuser => res.json(newuser));
   },
   updateUser: (req, res) => {
     knex("users")
