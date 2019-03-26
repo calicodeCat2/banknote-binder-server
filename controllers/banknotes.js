@@ -6,6 +6,7 @@ module.exports = {
       knex('banknotes')
       .join('countries', 'ctry_id', '=', 'countries.id')
       .join('regions', 'reg_id', '=', 'regions.id')
+      .orderBy('countries.name', 'asc')
         .then(banknotes => res.json(banknotes))
     },
     getRandom: (req, res) => {
@@ -72,6 +73,13 @@ module.exports = {
         knex('regions').select('region_name')
         .where('id', req.params.id)
           .then(region => res.json(region))
+      },
+
+      getCountriesbyRegion: (req, res) => {
+        knex('regions')
+        .where('regions.id', req.params.id)
+        .join('countries', 'regions.id', '=', 'countries.reg_id')
+        .then(countries => res.json(countries))
       },
 
       getNewIssues: (req, res) => {

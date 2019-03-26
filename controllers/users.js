@@ -48,8 +48,14 @@ module.exports = {
       .join("collections", "banknotes.id", "=", "note_id")
       .join("users", "collections.id", "=", "users_id")
       .then(users => res.json(users));
-      
   },
+  addToCollection: (req, res) => {
+    knex("collections")
+    .insert(req.body)
+    .returning("*")
+    .then(collectionAddition => res.json(collectionAddition));
+  },
+
   addUser: (req, res) => {
     knex("users")
       .insert(req.body)

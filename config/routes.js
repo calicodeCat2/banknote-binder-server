@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.get("/banknotes/random", banknotes.getRandom);
   app.get("/regions", banknotes.getRegions);
   app.get("/regions/:id", banknotes.getRegion);
+  app.get("/regions/countries/:id", banknotes.getCountriesbyRegion);
   app.get("/newissues", banknotes.getNewIssues);
   app.get("/newissues/:id", banknotes.getOneNewIssue);
   app.post("/newissues/addnewissue", banknotes.addNewIssue);
@@ -26,11 +27,12 @@ module.exports = function(app) {
   app.delete("/newissues/deletenewissue/:id", banknotes.deleteNewIssue);
 
   // User Table Routes
+  app.get("/users/login/:email", users.loginUser);
   app.get("/users", users.getUsers);
   app.get("/users/:id", users.getUser);
   app.get("/users/collection/:id", users.getUserCollection);
   app.get("/users/collections", users.getAllCollections);
-  app.get("/users/login/:email", users.loginUser);
+  app.get("/users/collections/add", users.addToCollection);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);
   app.delete("/users/deleteuser/:id", users.deleteUser);
