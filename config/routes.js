@@ -10,21 +10,20 @@ module.exports = function(app) {
 
   // Banknote Table Routes
   app.get("/banknotes", banknotes.getBanknotes);
+  app.get("/banknotes/:id", banknotes.getBanknote);
   app.post("/banknotes/addbanknote", banknotes.addBankote);
   app.patch("/banknotes/updatebanknote/:id", banknotes.updateBanknote);
   app.delete("/banknotes/deletebanknote/:id", banknotes.deleteBanknote);
-  app.get("/banknotes/countries", banknotes.getCountries)
-  app.get("/banknotes/countries/:id", banknotes.getCountry);
-  app.get("/banknotes/:id", banknotes.getBanknote);
-  app.get("/banknotes/random", banknotes.getRandom);
+  app.get("/countries", banknotes.getCountries)
+  app.get("/countries/:id", banknotes.getCountry);
   app.get("/regions", banknotes.getRegions);
   app.get("/regions/:id", banknotes.getRegion);
   app.get("/regions/countries/:id", banknotes.getCountriesbyRegion);
   app.get("/newissues", banknotes.getNewIssues);
   app.get("/newissues/:id", banknotes.getOneNewIssue);
   app.post("/newissues/addnewissue", banknotes.addNewIssue);
-  app.patch("/newissues/updatenewissue/:id", banknotes.updateNewIssue);
-  app.delete("/newissues/deletenewissue/:id", banknotes.deleteNewIssue);
+  app.patch("/newissues/update/:id", banknotes.updateNewIssue);
+  app.delete("/newissues/delete/:id", banknotes.deleteNewIssue);
 
   // User Table Routes
   app.post("/users/login", users.loginUser);
@@ -32,8 +31,9 @@ module.exports = function(app) {
   app.get("/users", users.getUsers);
   app.get("/users/:id", users.getUser);
   app.get("/users/collection/:id", users.getUserCollection);
-  app.get("/users/collections", users.getAllCollections);
   app.post("/users/collections/addnote/:id", users.addToCollection);
+  app.patch("/users/collections/editnote/:id", users.editCollection);
+  app.post("/users/wantlists/addnote/:id", users.addToWantList);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);
   app.delete("/users/deleteuser/:id", users.deleteUser);

@@ -2,18 +2,16 @@ const knex = require("../db/knex.js");
 
 module.exports = {
   registerUser: (req, res) => {
+    
     knex('users')
     .insert({
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
+      first_name: req.body.newuser.first_name,
+      last_name: req.body.newuser.last_name,
+      email: req.body.newuser.email,
+      password: req.body.newuser.password,
     })
     .returning('*')
-    .then('newuser'),
-    function (err) {
-      if (err) return res.status(500).send("There was a problem with registration")
-    }
+    .then(newuser => res.json(newuser))
   },
   loginUser: (req, res) => {
     knex("users")
@@ -40,18 +38,9 @@ module.exports = {
       .join("regions", "reg_id", "=", "regions.id")
       .then(user => res.json(user));
   },
-  getAllCollections: (req, res) => {
-    knex("regions")
-      .join("countries", "id", "=", "region_id")
-      .join("banknotes", "countries.id", "=", "ctry_id")
-      .join("collections", "banknotes.id", "=", "note_id")
-      .join("users", "collections.id", "=", "users_id")
-      .then(users => res.json(users));
-  },
+
   addToCollection: (req, res) => {
     knex("collections")
-    // .where("users.id", req.params.id)
-    // .join("collections", "users.id", "=", "collections.user_id")
     .insert({
       user_id: req.body.user_id,
       note_id: req.body.note_id,
@@ -60,6 +49,26 @@ module.exports = {
     })
     .returning("*")
     .then(collectionAddition => res.json(collectionAddition));
+  },
+
+  editCollection: (req, res) => {
+    knex("collections")
+    .where('id', req.params)
+    .update(req.body)
+    .returning("*")
+    .then(data => res.json(data));
+  },
+
+  addToWantList: (req, res) => {
+    knex("collections")
+    .insert({
+      user_id: req.body.user_id,
+      note_id: req.body.note_id,
+      in_collection: req.body.in_collection,
+      in_wantlist: req.body.in_wantlist
+    })
+    .returning("*")
+    .then(wantlistAddition => res.json(wantlistAddition));
   },
 
   addUser: (req, res) => {
