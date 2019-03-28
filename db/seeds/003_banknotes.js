@@ -2265,7 +2265,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Uganda-54c-50000Shillings-2017.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "117d",
           denomination: 2,
           currency: "Hryven",
@@ -2274,7 +2274,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Ukraine-117d-2Hryven-2013.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "118d",
           denomination: 5,
           currency: "Hryven",
@@ -2283,7 +2283,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Ukraine-118d-5Hryven-2013.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "119Ac",
           denomination: 10,
           currency: "Hryven",
@@ -2292,7 +2292,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Ukraine-119Ac-10Hryven-2013.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "120d",
           denomination: 20,
           currency: "Hryvnia",
@@ -2301,7 +2301,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Ukraine-120d-20Hryvnia-2013.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "121e",
           denomination: 50,
           currency: "Hryven",
@@ -2310,7 +2310,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-2.amazonaws.com/note-collect-1/Ukraine-121e-50Hryven-2014.jpg"
         },
         {
-          ctry_id: 43,
+          ctry_id: 45,
           catalog_no: "123d",
           denomination: 200,
           currency: "Hryven",
