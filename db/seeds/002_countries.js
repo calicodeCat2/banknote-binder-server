@@ -19,11 +19,11 @@ exports.seed = function(knex, Promise) {
         },
         {
           name: "Barbados",
-          reg_id: 4
+          reg_id: 3
         },
         {
           name: "Belize",
-          reg_id: 1
+          reg_id: 4
         },
         {
           name: "Bermuda",

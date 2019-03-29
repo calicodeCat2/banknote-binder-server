@@ -44,8 +44,8 @@ module.exports = {
     .insert({
       user_id: req.body.user_id,
       note_id: req.body.note_id,
-      in_collection: req.body.in_collection,
-      in_wantlist: req.body.in_wantlist
+      in_collection: true,
+      in_wantlist: false
     })
     .returning("*")
     .then(collectionAddition => res.json(collectionAddition));
@@ -64,8 +64,8 @@ module.exports = {
     .insert({
       user_id: req.body.user_id,
       note_id: req.body.note_id,
-      in_collection: req.body.in_collection,
-      in_wantlist: req.body.in_wantlist
+      in_collection: false,
+      in_wantlist: true
     })
     .returning("*")
     .then(wantlistAddition => res.json(wantlistAddition));

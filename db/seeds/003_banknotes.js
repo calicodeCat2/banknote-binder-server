@@ -192,7 +192,7 @@ exports.seed = function(knex, Promise) {
           currency: "Dram",
           issue_date: "2018",
           img_url:
-            "https://s3-us-west-2.amazonaws.com/note-collect-1/Armenia-New-10000Dram-2018.jpg"
+            "https://s3-us-west-2.amazonaws.com/note-collect-1/Armenia-New-20000Dram-2018.jpg"
         },
         {
           ctry_id: 4,
