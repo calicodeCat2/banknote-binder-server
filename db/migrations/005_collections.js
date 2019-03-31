@@ -11,6 +11,9 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .references("id")
       .inTable("users");
+    table
+      .enum("grade", ["UNC", "AU", "EF", "VF", "F", "VG", "G", "Fair", "P"])
+      .defaultTo("UNC");
     table.boolean("in_collection").defaultTo(false);
     table.boolean("in_wantlist").defaultTo(false);
     table.timestamps(true, true);

@@ -5,9 +5,6 @@ exports.up = function(knex, Promise) {
     table.integer("denomination");
     table.string("currency");
     table.string("issue_date");
-    table
-      .enum("grade", ["UNC", "AU", "EF", "VF", "F", "VG", "G", "Fair", "P"])
-      .defaultTo("UNC");
     table.string("img_url");
     table
       .integer("ctry_id")

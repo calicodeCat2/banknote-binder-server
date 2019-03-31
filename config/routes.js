@@ -31,7 +31,7 @@ module.exports = function(app) {
   app.get("/users", users.getUsers);
   app.get("/users/:id", users.getUser);
   app.get("/users/collection/:id", users.getUserCollection);
-  app.post("/users/collections/addnote/", users.addToCollection);
+  app.post("/users/collections/addnote", users.addToCollection);
   app.patch("/users/collections/editnote/:id", users.editCollection);
   app.post("/users/wantlists/addnote/", users.addToWantList);
   app.post("/users/adduser", users.addUser);

@@ -5,7 +5,7 @@ module.exports = {
     getBanknotes: (req, res) => {
       knex('banknotes')
       .select(['banknotes.id as banknote_id', 'banknotes.catalog_no', 'banknotes.denomination',
-       'banknotes.currency', 'banknotes.issue_date', 'banknotes.img_url', 'banknotes.grade',
+       'banknotes.currency', 'banknotes.issue_date', 'banknotes.img_url',
         'banknotes.ctry_id', 'regions.id as region_id', 'regions.region_name', 'countries.id',
          'countries.name', 'countries.reg_id'])
       .join('countries', 'ctry_id', '=', 'countries.id')
