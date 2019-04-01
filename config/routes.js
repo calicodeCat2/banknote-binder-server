@@ -33,6 +33,7 @@ module.exports = function(app) {
   app.get("/users/collection/:id", users.getUserCollection);
   app.post("/users/collections/addnote", users.addToCollection);
   app.patch("/users/collections/editnote/:id", users.editCollection);
+  app.delete("/users/collections/deletenote/:id", users.deleteNote);
   app.post("/users/wantlists/addnote/", users.addToWantList);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);

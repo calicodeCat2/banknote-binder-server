@@ -57,36 +57,37 @@ module.exports = {
   addToCollection: (req, res) => {
     knex("collections")
     .insert({
-      user_id: req.body.user_id,
-      note_id: req.body.note_id,
-      grade: req.body.grade,
+      user_id: req.body.newcollectionitem.user_id,
+      note_id: req.body.newcollectionitem.note_id,
+      grade: req.body.newcollectionitem.grade,
       in_collection: true,
       in_wantlist: false
     })
     .returning("*")
     .then(collectionAddition => res.json(collectionAddition));
   },
-
+  
   editCollection: (req, res) => {
     knex("collections")
     .where('id', req.params.id)
     .update({
       note_id: req.body.note_id,
-      user_id: req.body.user_id,
+      user_id: req.body.newnote_user_id,
       grade: req.body.grade,
       in_collection: req.body.in_collection,
       in_wantlist: req.body.in_wantlist,
-
+      
     })
     .returning("*")
     .then(data => res.json(data));
   },
-
+  
   addToWantList: (req, res) => {
+    console.log('users controller', req.body);
     knex("collections")
     .insert({
-      user_id: req.body.user_id,
-      note_id: req.body.note_id,
+      user_id: req.body.newcollectionitem.user_id,
+      note_id: req.body.newcollectionitem.note_id,
       in_collection: false,
       in_wantlist: true
     })
@@ -114,5 +115,12 @@ module.exports = {
       .del()
       .returning("*")
       .then(deletedUser => res.json(deletedUser));
+  },
+  deleteNote: (req, res) => {
+    knex("collections")
+      .where("id", req.params.id)
+      .del()
+      .returning("*")
+      .then(deletedNote => res.json(deletedNote))
   }
 };
