@@ -122,5 +122,12 @@ module.exports = {
       .del()
       .returning("*")
       .then(deletedNote => res.json(deletedNote))
+  },
+  deleteWantNote: (req, res) => {
+    knex("collections")
+      .where("id", req.params.id)
+      .del()
+      .returning("*")
+      .then(deletedNote => res.json(deletedNote))
   }
 };

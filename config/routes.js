@@ -35,6 +35,7 @@ module.exports = function(app) {
   app.patch("/users/collections/editnote/:id", users.editCollection);
   app.delete("/users/collections/deletenote/:id", users.deleteNote);
   app.post("/users/wantlists/addnote/", users.addToWantList);
+  app.delete("/users/wantlists/deletenote/:id", users.deleteWantNote);
   app.post("/users/adduser", users.addUser);
   app.patch("/users/updateuser/:id", users.updateUser);
   app.delete("/users/deleteuser/:id", users.deleteUser);
